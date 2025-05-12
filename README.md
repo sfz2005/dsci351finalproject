@@ -13,8 +13,8 @@ Make sure you have the following installed:
 2. Put all datasets and code files in one directory in the terminal.
 3. Create three MySQL databases named quantdb, esgdb, and macrodb.
 4. Create and activate a virtual environment
-`python -m venv venv
-source venv/bin/activate`
+`python -m venv venv`
+`source venv/bin/activate`
 5. Install dependencies
 `pip install -r requirements.txt`
 6. Load data using the scripts in 'data_loading' directory
