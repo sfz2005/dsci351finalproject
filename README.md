@@ -6,15 +6,14 @@ QuantDB is a command-line application that allows users to interact with structu
 Make sure you have the following installed:
 1. Python 3.8
 2. MySQL Server running locally on an EC2 Instance
-3. OpenAI API Key via https://platform.openai.com/api-keys (See where to put the API key in step 7 of the instructions below)
+3. OpenAI API Key via https://platform.openai.com/api-keys (See where to put the API key in step 8 of the instructions below)
 
 ## Setup Instructions
 1. Download all five datasets from 'data' directory and all .py files from the other directories.
 2. Put all datasets and code files in one directory in the terminal.
 3. Create three MySQL databases named quantdb, esgdb, and macrodb.
-4. quantdb tables:
+4. Fill in tables and attributes into the database:
 **quantdb tables:**
-
 ```sql
 USE quantdb;
 
@@ -52,12 +51,9 @@ CREATE TABLE financials (
   FOREIGN KEY (ticker) REFERENCES companies(ticker)
 );
 ```
+**esgdb tables:**
 
-esgdb tables:
-
-sql
-Copy
-Edit
+```sql
 USE esgdb;
 
 CREATE TABLE esg_scores (
@@ -82,6 +78,33 @@ CREATE TABLE esg_controversies (
   fulltime_employees INT,
   FOREIGN KEY (ticker) REFERENCES esg_scores(ticker)
 );
+```
+**macrodb tables:**
+```sql
+CREATE TABLE economic_indicators (
+  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
+  date DATE,
+  gdp_growth FLOAT,
+  inflation_rate FLOAT,
+  interest_rate FLOAT
+);
+
+CREATE TABLE global_factors (
+  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
+  date DATE,
+  crude_oil_price FLOAT,
+  gold_price FLOAT,
+  retail_sales_billion FLOAT
+);
+
+CREATE TABLE market_activity (
+  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
+  date DATE,
+  stock_index VARCHAR(50),
+  close_price FLOAT,
+  trading_volume BIGINT
+);
+```
 5. Create and activate a virtual environment
 `python -m venv venv`
 `source venv/bin/activate`
@@ -91,7 +114,7 @@ CREATE TABLE esg_controversies (
 eg. `python load_companies.py`
 8. Add your OpenAI API key in 'conv_quantdb.py', 'conv_esgdb.py', and 'conv_macrodb.py'
 - Look for this line: `os.environ["OPENAI_API_KEY"] = "your_openai_api_key"`
-8. Run the system by entering:
+9. Run the system by entering:
 - eg.`python3 query_quantdb.py` from the 'query_interface' directory
 - You'll see: '❓Ask me a question (or type 'exit'):'
 - Type a query like: 'Show me the tables in the database.'
