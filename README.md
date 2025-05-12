@@ -13,9 +13,9 @@ Make sure you have the following installed:
 2. Put all datasets and code files in one directory in the terminal.
 3. Create three MySQL databases named quantdb, esgdb, and macrodb.
 4. quantdb tables:
-sql
-Copy
-Edit
+**quantdb tables:**
+
+```sql
 USE quantdb;
 
 CREATE TABLE companies (
@@ -52,6 +52,7 @@ CREATE TABLE financials (
   FOREIGN KEY (ticker) REFERENCES companies(ticker)
 );
 esgdb tables:
+
 sql
 Copy
 Edit
@@ -78,35 +79,6 @@ CREATE TABLE esg_controversies (
   address VARCHAR(150),
   fulltime_employees INT,
   FOREIGN KEY (ticker) REFERENCES esg_scores(ticker)
-);
-macrodb tables:
-sql
-Copy
-Edit
-USE macrodb;
-
-CREATE TABLE economic_indicators (
-  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
-  date DATE,
-  gdp_growth FLOAT,
-  inflation_rate FLOAT,
-  interest_rate FLOAT
-);
-
-CREATE TABLE global_factors (
-  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
-  date DATE,
-  crude_oil_price FLOAT,
-  gold_price FLOAT,
-  retail_sales_billion FLOAT
-);
-
-CREATE TABLE market_activity (
-  record_id VARCHAR(8) NOT NULL PRIMARY KEY,
-  date DATE,
-  stock_index VARCHAR(50),
-  close_price FLOAT,
-  trading_volume BIGINT
 );
 5. Create and activate a virtual environment
 `python -m venv venv`
