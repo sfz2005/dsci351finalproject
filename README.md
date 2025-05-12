@@ -51,6 +51,8 @@ CREATE TABLE financials (
   price_to_book FLOAT,
   FOREIGN KEY (ticker) REFERENCES companies(ticker)
 );
+```
+
 esgdb tables:
 
 sql
