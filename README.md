@@ -1,6 +1,4 @@
-# DSCI 351 Final Project
-# QuantDB:
-# Natural Language Interface for Financial Market Analysis
+# DSCI 351 Final Project: QuantDB - Natural Language Interface for Financial Market Analysis
 
 QuantDB is a command-line application that allows users to interact with structured financial data using natural language. By using OpenAI’s GPT-3.5 model, user input in plain English is translated into SQL queries, executed on a MySQL database, and the results are displayed in a readable tabular format.
 
