@@ -20,9 +20,13 @@ Make sure you have the following installed:
 6. Load data using the scripts in 'data_loading' directory
 eg. `python load_companies.py`
 7. Add your OpenAI API key in 'conv_quantdb.py', 'conv_esgdb.py', and 'conv_macrodb.py'
+
 Look for this line: `os.environ["OPENAI_API_KEY"] = "your_openai_api_key"`
 8. Run the system by entering:
 eg.`python3 query_quantdb.py` from the 'query_interface' directory
-You'll see: '❓Ask me a question (or type 'exit'):'
+
+You'll see: '❓Ask me a question (or type 'exit'):
+'
 Type a query like: 'Show me the tables in the database.'
+
 You'll receive the translated SQL and tabular results.
